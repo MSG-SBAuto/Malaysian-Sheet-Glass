@@ -28,7 +28,9 @@ text-align:center;
 }
 
 .logo img{
-width:120px;
+width:auto;
+height:60px; 
+display:block;
 }
 
 .sidebar ul{
