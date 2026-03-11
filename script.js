@@ -16,3 +16,8 @@ function updateTime(){
 
 setInterval(updateTime,1000);
 updateTime();
+
+document.querySelector(".menu-parent").addEventListener("click", function(){
+    const submenu = this.querySelector(".submenu");
+    submenu.classList.toggle("show");
+});
