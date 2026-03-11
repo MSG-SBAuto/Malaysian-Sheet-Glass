@@ -1,78 +1,133 @@
 body{
-font-family:Segoe UI;
 margin:0;
-background:#f4f6f9;
+font-family:Segoe UI;
+background:#f5f7fb;
 }
 
 
-/* HEADER */
-
-.header{
+.layout{
 display:flex;
-align-items:center;
-justify-content:center;
+height:100vh;
+}
+
+
+
+/* SIDEBAR */
+
+.sidebar{
+
+width:220px;
 background:#0b3d91;
 color:white;
 padding:20px;
+
 }
 
-.header img{
-height:40px;
-margin-right:20px;
-}
-
-
-/* GRID */
-
-.container{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-padding:40px;
-}
-
-
-/* CARD */
-
-.card{
-background:white;
-border-radius:12px;
-padding:20px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+.logo{
 text-align:center;
 }
 
-.card h2{
-margin:0;
-font-size:18px;
+.logo img{
+width:60px;
 }
 
-.card h3{
-margin:5px 0 10px 0;
+.sidebar ul{
+list-style:none;
+padding:0;
+margin-top:30px;
+}
+
+.sidebar li{
+padding:12px;
+cursor:pointer;
+border-radius:6px;
+}
+
+.sidebar li:hover{
+background:#1c5ed6;
 }
 
 
-/* COLORS */
+
+/* MAIN */
+
+.main{
+flex:1;
+padding:30px;
+overflow:auto;
+}
+
+header h1{
+margin-top:0;
+}
+
+
+
+/* KPI */
+
+.kpi{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+
+}
+
+.kpi-card{
+
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 3px 8px rgba(0,0,0,0.1);
+
+}
+
+.kpi-card p{
+font-size:24px;
+font-weight:bold;
+}
+
+
+
+/* FMDS */
+
+.section-title{
+margin-top:40px;
+}
+
+.fmds{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+
+}
+
+.step{
+
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 3px 8px rgba(0,0,0,0.1);
+
+}
 
 .step1{border-top:6px solid #1f4e79;}
 .step2{border-top:6px solid #2e8b57;}
 .step3{border-top:6px solid #c2185b;}
 .step4{border-top:6px solid #d4a017;}
 
-
-/* BUTTONS */
-
 button{
-display:block;
+
 width:100%;
-margin-top:10px;
+margin-top:8px;
 padding:10px;
 border:none;
-border-radius:8px;
+border-radius:6px;
 background:#0078d4;
 color:white;
 cursor:pointer;
-font-size:14px;
+
 }
 
 button:hover{
@@ -81,16 +136,15 @@ background:#005fa3;
 
 
 
-/* PLANNING */
+/* TOOL BUTTONS */
 
-.planning{
-text-align:center;
+.tools{
 margin-top:10px;
 }
 
-.planningBtn{
-width:300px;
-background:#4caf50;
+.tools button{
+width:200px;
+margin-right:10px;
 }
 
 
@@ -98,9 +152,10 @@ background:#4caf50;
 /* NEWSLETTER */
 
 .newsletter{
-width:300px;
-margin:40px auto;
-text-align:center;
+
+margin-top:40px;
+width:350px;
+
 }
 
 .newsletter img{
