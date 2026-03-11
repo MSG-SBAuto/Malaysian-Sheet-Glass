@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,43 +11,102 @@
 
 </head>
 
+
 <body>
 
-<header class="header">
+<div class="layout">
 
-    <div class="logo">
-        <img src="images/nsg-logo.png">
-    </div>
+<!-- SIDEBAR -->
 
-    <h1>SG. BULOH NSG FMDS DASHBOARD</h1>
+<div class="sidebar">
 
-</header>
+<div class="logo">
+<img src="images/nsg-logo.png">
+<h2>NSG FMDS</h2>
+</div>
 
+<ul>
 
-<div class="container">
+<li onclick="openLink('#')">Dashboard</li>
+<li onclick="openLink('#')">Skill Matrix</li>
+<li onclick="openLink('#')">Production</li>
+<li onclick="openLink('#')">Energy Monitoring</li>
+<li onclick="openLink('#')">Quality</li>
+<li onclick="openLink('#')">Documents</li>
 
-<!-- STEP 1 -->
-<div class="card step1">
-
-<h2>STEP 1</h2>
-<h3>Develop People</h3>
-
-<p>Confirm each operator's skill level.</p>
-
-<button class="btn">Skill Matrix</button>
+</ul>
 
 </div>
 
 
-<!-- STEP 2 -->
-<div class="card step2">
+<!-- MAIN AREA -->
 
-<h2>STEP 2</h2>
-<h3>Preparation</h3>
+<div class="main">
 
-<p>Ensure conditions to produce good products.</p>
+<header>
 
-<button>Operator Allocation Map</button>
+<h1>SG. BULOH FMDS DASHBOARD</h1>
+
+</header>
+
+
+<!-- KPI SECTION -->
+
+<div class="kpi">
+
+<div class="kpi-card">
+
+<h3>Production Today</h3>
+<p>12,540 pcs</p>
+
+</div>
+
+<div class="kpi-card">
+
+<h3>Machine Status</h3>
+<p>Running</p>
+
+</div>
+
+<div class="kpi-card">
+
+<h3>Energy Usage</h3>
+<p>820 kWh</p>
+
+</div>
+
+<div class="kpi-card">
+
+<h3>Quality Yield</h3>
+<p>98.6%</p>
+
+</div>
+
+</div>
+
+
+<!-- FMDS STEPS -->
+
+<h2 class="section-title">Daily FMDS Process</h2>
+
+<div class="fmds">
+
+<div class="step step1">
+
+<h3>STEP 1</h3>
+<h4>Develop People</h4>
+
+<button onclick="openLink('#')">Skill Matrix</button>
+
+</div>
+
+
+<div class="step step2">
+
+<h3>STEP 2</h3>
+<h4>Preparation</h4>
+
+<button>Operator Allocation</button>
 <button>4M Change</button>
 <button>Quick Kaizen</button>
 <button>Attendance</button>
@@ -54,13 +114,10 @@
 </div>
 
 
-<!-- STEP 3 -->
-<div class="card step3">
+<div class="step step3">
 
-<h2>STEP 3</h2>
-<h3>Stability</h3>
-
-<p>Monitor production conditions.</p>
+<h3>STEP 3</h3>
+<h4>Stability</h4>
 
 <button>Production Progress</button>
 <button>Gemba Walk</button>
@@ -68,13 +125,10 @@
 </div>
 
 
-<!-- STEP 4 -->
-<div class="card step4">
+<div class="step step4">
 
-<h2>STEP 4</h2>
-<h3>Shift Change</h3>
-
-<p>Close and ensure good conditions for next shift.</p>
+<h3>STEP 4</h3>
+<h4>Shift Change</h4>
 
 <button>5S</button>
 <button>EHS</button>
@@ -82,31 +136,40 @@
 
 </div>
 
+</div>
+
+
+
+<!-- TOOL SECTION -->
+
+<h2 class="section-title">Quick Tools</h2>
+
+<div class="tools">
+
+<button>Production Planning</button>
+<button>Management Dashboard</button>
+<button>Energy Monitoring</button>
 
 </div>
 
 
 
-<!-- Production Planning -->
-<div class="planning">
+<!-- NEWSLETTER -->
 
-<button class="planningBtn">
-Production Planning
-</button>
-
-</div>
-
-
-
-<!-- Newsletter -->
 <div class="newsletter">
 
-<h2>Newsletter</h2>
+<h2>Company Newsletter</h2>
 
 <img src="images/newsletter.jpg">
 
 </div>
 
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
