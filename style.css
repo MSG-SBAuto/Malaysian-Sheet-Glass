@@ -1,0 +1,109 @@
+body{
+font-family:Segoe UI;
+margin:0;
+background:#f4f6f9;
+}
+
+
+/* HEADER */
+
+.header{
+display:flex;
+align-items:center;
+justify-content:center;
+background:#0b3d91;
+color:white;
+padding:20px;
+}
+
+.header img{
+height:40px;
+margin-right:20px;
+}
+
+
+/* GRID */
+
+.container{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+padding:40px;
+}
+
+
+/* CARD */
+
+.card{
+background:white;
+border-radius:12px;
+padding:20px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.card h2{
+margin:0;
+font-size:18px;
+}
+
+.card h3{
+margin:5px 0 10px 0;
+}
+
+
+/* COLORS */
+
+.step1{border-top:6px solid #1f4e79;}
+.step2{border-top:6px solid #2e8b57;}
+.step3{border-top:6px solid #c2185b;}
+.step4{border-top:6px solid #d4a017;}
+
+
+/* BUTTONS */
+
+button{
+display:block;
+width:100%;
+margin-top:10px;
+padding:10px;
+border:none;
+border-radius:8px;
+background:#0078d4;
+color:white;
+cursor:pointer;
+font-size:14px;
+}
+
+button:hover{
+background:#005fa3;
+}
+
+
+
+/* PLANNING */
+
+.planning{
+text-align:center;
+margin-top:10px;
+}
+
+.planningBtn{
+width:300px;
+background:#4caf50;
+}
+
+
+
+/* NEWSLETTER */
+
+.newsletter{
+width:300px;
+margin:40px auto;
+text-align:center;
+}
+
+.newsletter img{
+width:100%;
+border-radius:10px;
+}
