@@ -21,9 +21,3 @@ document.querySelector(".menu-parent").addEventListener("click", function(){
     const submenu = this.querySelector(".submenu");
     submenu.classList.toggle("show");
 });
-
-<script>
-function openLink(url) {
-    window.open(url, '_blank'); // open in new tab
-}
-</script>
