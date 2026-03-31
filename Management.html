@@ -3,24 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NSG Group - Interactive Interface</title>
+    <title>NSG Group Interactive</title>
     <style>
-        :root {
-            --glow-color: rgba(255, 170, 50, 0.8);
-            --glass-bg: rgba(255, 255, 255, 0.15);
-        }
-
+        /* 1. Background Setup */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
+            font-family: 'Arial', sans-serif;
             background-color: #000;
         }
 
-        /* Background Setup */
-        .main-container {
+        .main-wrapper {
             background-image: url("MSG AI Building Photo.png");
             background-size: cover;
             background-position: center;
@@ -28,108 +23,92 @@
             height: 100vh;
             width: 100vw;
             position: relative;
-            display: flex;
-            flex-direction: column;
-            color: white;
         }
 
-        /* Animated Glowing Border Line */
-        .energy-frame {
+        /* 2. Animated Energy Line Effect */
+        .energy-border {
             position: absolute;
             top: 10%;
             left: 5%;
             right: 5%;
             bottom: 10%;
-            border: 2px solid var(--glow-color);
+            border: 2px solid rgba(255, 170, 50, 0.7);
             border-radius: 40px;
-            pointer-events: none;
-            box-shadow: 0 0 20px var(--glow-color), inset 0 0 15px var(--glow-color);
-            animation: pulse-glow 3s infinite alternate;
+            pointer-events: none; /* Allows clicking through to buttons */
+            box-shadow: 0 0 15px rgba(255, 150, 0, 0.5), inset 0 0 15px rgba(255, 150, 0, 0.3);
+            animation: glowPulse 3s infinite ease-in-out;
         }
 
-        @keyframes pulse-glow {
-            0% { opacity: 0.6; filter: drop-shadow(0 0 5px var(--glow-color)); }
-            100% { opacity: 1; filter: drop-shadow(0 0 15px #fff); }
+        @keyframes glowPulse {
+            0% { opacity: 0.5; box-shadow: 0 0 10px rgba(255, 150, 0, 0.4); }
+            50% { opacity: 1; box-shadow: 0 0 25px rgba(255, 200, 50, 0.8); }
+            100% { opacity: 0.5; box-shadow: 0 0 10px rgba(255, 150, 0, 0.4); }
         }
 
-        /* Home Button - Top Left */
-        .home-btn {
+        /* 3. Home Button (Top Left) */
+        .btn-home {
             position: absolute;
             top: 30px;
             left: 30px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid white;
             padding: 10px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
-            z-index: 10;
-        }
-
-        .home-btn:hover {
-            background: var(--glow-color);
-            transform: scale(1.05);
-        }
-
-        /* Main Content */
-        .content {
-            margin-top: 12%;
-            margin-left: 10%;
-            z-index: 5;
-        }
-
-        h1 {
-            font-size: 4rem;
-            margin: 0;
-            line-height: 1.1;
-            text-transform: uppercase;
-            font-weight: 800;
-        }
-
-        .slogan {
-            font-size: 1.8rem;
-            color: #ffcc66;
-            margin: 20px 0;
-        }
-
-        /* Vertical Button Group below slogan */
-        .button-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 250px;
-            margin-top: 30px;
-        }
-
-        .nav-btn {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.5);
             color: white;
-            padding: 12px;
-            font-size: 1.1rem;
-            border-radius: 8px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.4s ease;
-            text-align: center;
+            font-weight: bold;
+            transition: 0.3s;
+            z-index: 100;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-home:hover {
+            background: rgba(255, 165, 0, 0.8);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px orange;
+        }
+
+        /* 4. Button Container (Below "Create. Inspire. Belong") */
+        .button-container {
+            position: absolute;
+            top: 55%; /* Positions it right under the slogan */
+            left: 10%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        /* Main Menu Buttons */
+        .glass-btn {
+            width: 200px;
+            padding: 12px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            text-align: left;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
             position: relative;
             overflow: hidden;
+            transition: all 0.4s ease;
         }
 
-        /* Animation effect for buttons */
-        .nav-btn:hover {
-            background: var(--glow-color);
-            border-color: white;
-            letter-spacing: 2px;
-            box-shadow: 0 0 20px var(--glow-color);
-            transform: translateX(10px);
+        /* Hover Animation: Slide Right & Orange Glow */
+        .glass-btn:hover {
+            background: rgba(255, 140, 0, 0.7);
+            border-color: #fff;
+            transform: translateX(15px);
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
+            letter-spacing: 1px;
         }
 
-        .nav-btn::after {
+        /* Shine Reflection Effect */
+        .glass-btn::after {
             content: '';
             position: absolute;
             top: 0; left: -100%;
@@ -138,31 +117,23 @@
             transition: 0.5s;
         }
 
-        .nav-btn:hover::after {
+        .glass-btn:hover::after {
             left: 100%;
         }
-
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <div class="energy-frame"></div>
+    <div class="main-wrapper">
+        <div class="energy-border"></div>
 
-        <div class="home-btn" onclick="location.reload()">
-            <span>🏠</span> BACK / HOME
-        </div>
+        <a href="#" class="btn-home">🏠 BACK / HOME</a>
 
-        <div class="content">
-            <h1>WE SHAPE<br>THE FUTURE<br>OF GLASS</h1>
-            <p class="slogan">Create. Inspire. Belong.</p>
-
-            <div class="button-group">
-                <button class="nav-btn">Laminating</button>
-                <button class="nav-btn">Toughening</button>
-                <button class="nav-btn">Tertiary</button>
-                <button class="nav-btn">SCM</button>
-            </div>
+        <div class="button-container">
+            <button class="glass-btn">Laminating</button>
+            <button class="glass-btn">Toughening</button>
+            <button class="glass-btn">Tertiary</button>
+            <button class="glass-btn">SCM</button>
         </div>
     </div>
 
