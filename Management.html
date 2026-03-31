@@ -116,6 +116,25 @@
     gap: 20px 40px;     /* First number is vertical gap, second is horizontal gap */
     z-index: 100;
 }
+        }
+
+        /* 4. NEW: Clock Styling (Top Right) */
+        #live-clock {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            padding: 10px 25px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 170, 0, 0.5);
+            color: #ffaa00; /* Matching the orange glow */
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            z-index: 100;
+            box-shadow: 0 0 15px rgba(255, 170, 0, 0.3);
+        }
     </style>
 </head>
 <body>
