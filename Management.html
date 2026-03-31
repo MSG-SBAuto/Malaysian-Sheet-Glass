@@ -1,17 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-body {
-  background-image: url("MSG AI Building Photo.png");
-  background-size: cover;        /* make it full screen */
-  background-repeat: no-repeat;  /* prevent repeating */
-  /*background-position: center;    center the image */
-}
-</style>
+  <style>
+    /* Full screen background */
+    body {
+      background-image: url("MSG AI Building Photo.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Title */
+    h1 {
+      color: white;
+      text-shadow: 2px 2px 5px black;
+      margin-bottom: 40px;
+    }
+
+    /* Button styles */
+    .btn {
+      background-color: rgba(255, 255, 255, 0.8);
+      border: none;
+      color: #333;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    /* Hover animation effect */
+    .btn:hover {
+      background-color: #ffcc00;
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.4);
+    }
+
+    /* Container for buttons */
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    /* Back/Home button style */
+    .back-btn {
+      background-color: rgba(0,0,0,0.6);
+      color: white;
+      border-radius: 50px;
+      font-weight: bold;
+    }
+
+    .back-btn:hover {
+      background-color: #ff4d4d;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.5);
+    }
+
+  </style>
 </head>
 
 <body>
-<h1>Hello World</h1>
+
+  <div class="button-container">
+    <button class="btn">Laminating</button>
+    <button class="btn">Toughening</button>
+    <button class="btn">Tertiary</button>
+    <button class="btn">SCM</button>
+    <button class="btn back-btn">Back / Home</button>
+  </div>
 </body>
 </html>
