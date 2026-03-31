@@ -25,6 +25,20 @@
             position: relative;
         }
 
+        /* 2. Animated Energy Line Effect */
+        .energy-border {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            right: 5%;
+            bottom: 10%;
+            border: 2px solid rgba(255, 170, 50, 0.7);
+            border-radius: 40px;
+            pointer-events: none; /* Allows clicking through to buttons */
+            box-shadow: 0 0 15px rgba(255, 150, 0, 0.5), inset 0 0 15px rgba(255, 150, 0, 0.3);
+            animation: glowPulse 3s infinite ease-in-out;
+        }
+
         @keyframes glowPulse {
             0% { opacity: 0.5; box-shadow: 0 0 10px rgba(255, 150, 0, 0.4); }
             50% { opacity: 1; box-shadow: 0 0 25px rgba(255, 200, 50, 0.8); }
@@ -113,15 +127,15 @@
     <div class="main-wrapper">
         <div class="energy-border"></div>
 
-        <a href="#" class="btn-home">HOME</a>
-<div class="button">
-    <button class="glass-btn">Laminating</button>
-    <button class="glass-btn">Toughening</button>
-    <button class="glass-btn">Tertiary</button>
-    <button class="glass-btn">SCM</button>
-</div>
+        <a href="#" class="btn-home">🏠 BACK / HOME</a>
+
+        <div class="button-container">
+            <button class="glass-btn">Laminating</button>
+            <button class="glass-btn">Toughening</button>
+            <button class="glass-btn">Tertiary</button>
+            <button class="glass-btn">SCM</button>
+        </div>
     </div>
 
 </body>
 </html>
-
