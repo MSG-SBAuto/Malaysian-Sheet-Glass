@@ -150,7 +150,27 @@
     <button class="glass-btn">Tertiary</button>
     <button class="glass-btn">SCM</button>
 </div>
+        <div id="live-clock">00:00:00</div>
     </div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            let h = now.getHours();
+            let m = now.getMinutes();
+            let s = now.getSeconds();
+            
+            // Add leading zeros (e.g., 05 instead of 5)
+            h = h < 10 ? "0" + h : h;
+            m = m < 10 ? "0" + m : m;
+            s = s < 10 ? "0" + s : s;
+
+            document.getElementById('live-clock').innerText = `${h}:${m}:${s}`;
+        }
+
+        // Run clock immediately, then update every second
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
 
 </body>
 </html>
