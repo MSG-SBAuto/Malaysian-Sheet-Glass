@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NSG Group Interactive</title>
+    <title>Management Dashboard</title>
     <style>
         /* 1. Background Setup */
         body, html {
@@ -116,25 +116,6 @@
     gap: 20px 40px;     /* First number is vertical gap, second is horizontal gap */
     z-index: 100;
 }
-        }
-
-        /* 4. NEW: Clock Styling (Top Right) */
-        #live-clock {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            padding: 10px 25px;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 170, 0, 0.5);
-            color: #ffaa00; /* Matching the orange glow */
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            z-index: 100;
-            box-shadow: 0 0 15px rgba(255, 170, 0, 0.3);
-        }
 
           /* Footer Bar Styling */
     .footer-bar {
@@ -195,6 +176,56 @@
     font-size: 0.8rem;
     opacity: 0.8;
 }
+        .datetime-card {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    width: 280px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 170, 0, 0.4);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    z-index: 150;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 170, 0, 0.2);
+}
+
+.card-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+}
+
+#live-time {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #ffaa00; /* Glowing Orange */
+    text-shadow: 0 0 10px rgba(255, 170, 0, 0.5);
+    margin-bottom: 10px;
+    font-family: 'Courier New', monospace;
+}
+
+.card-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 170, 0, 0.5), transparent);
+    margin: 15px 0;
+}
+
+#live-date {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.location-tag {
+    margin-top: 10px;
+    font-size: 0.7rem;
+    color: #ffcc66;
+    opacity: 0.9;
+}
     </style>
 </head>
 <body>
@@ -210,8 +241,6 @@
     <button class="glass-btn">TERTIARY</button>
     <button class="glass-btn">SCM</button>
 </div>
-        <div id="live-clock">00:00:00</div>
-    </div>
 
     <div class="footer-bar">
     
@@ -235,26 +264,44 @@
             <span>www.pilkington.com</span>
         </div>
     </div>
+        
+        <div class="datetime-card">
+    <div class="card-label">Current Local Time</div>
+    <div id="live-time">00:00:00 PM</div>
+    <div class="card-divider"></div>
+    <div class="card-label">Current Date</div>
+    <div id="live-date">Wednesday, April 1, 2026</div>
+    <div class="location-tag">📍 Shah Alam, Malaysia</div>
 </div>
-    <script>
-        function updateClock() {
-            const now = new Date();
-            let h = now.getHours();
-            let m = now.getMinutes();
-            let s = now.getSeconds();
-            
-            // Add leading zeros (e.g., 05 instead of 5)
-            h = h < 10 ? "0" + h : h;
-            m = m < 10 ? "0" + m : m;
-            s = s < 10 ? "0" + s : s;
+        <script>
+            function updateDateTime() {
+    const now = new Date();
 
-            document.getElementById('live-clock').innerText = `${h}:${m}:${s}`;
-        }
+    // 1. Update Time (12-hour format with AM/PM)
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    
+    const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
+    document.getElementById('live-time').innerText = timeString;
 
-        // Run clock immediately, then update every second
-        updateClock();
-        setInterval(updateClock, 1000);
-    </script>
+    // 2. Update Date (Full string)
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dateString = now.toLocaleDateString('en-US', options);
+    document.getElementById('live-date').innerText = dateString;
+}
+
+// Start the clock
+updateDateTime();
+setInterval(updateDateTime, 1000);
+        </script>
+    
 
 </body>
 </html>
