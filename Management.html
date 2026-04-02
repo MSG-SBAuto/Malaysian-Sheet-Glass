@@ -177,6 +177,89 @@
     font-size: 0.8rem;
     opacity: 0.8;
 }
+        /* The Main Button Container */
+.glass-btn {
+    position: relative; /* Required for the status dot */
+    width: 220px;
+    padding: 20px;
+    background: rgba(15, 15, 15, 0.7); /* Darker glass for better contrast */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 4px; /* Sharper corners look more industrial */
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* 2. The Pulsing Status Dot */
+.glass-btn::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    background-color: #00ff00; /* Green = Optimal */
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff00;
+    animation: pulseStatus 2s infinite;
+}
+
+@keyframes pulseStatus {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* 3. The Corner Brackets (HUD Look) */
+.glass-btn::after {
+    content: '';
+    position: absolute;
+    top: -5px; left: -5px; bottom: -5px; right: -5px;
+    border: 1px solid rgba(255, 170, 0, 0.3);
+    pointer-events: none;
+    transition: 0.3s;
+    clip-path: polygon(
+        0 0, 20% 0, 20% 2px, 2px 2px, 2px 20%, 0 20%, /* Top Left */
+        80% 0, 100% 0, 100% 20%, 98% 20%, 98% 2px, 80% 2px, /* Top Right */
+        100% 80%, 100% 100%, 80% 100%, 80% 98%, 98% 98%, 98% 80%, /* Bottom Right */
+        20% 100%, 0 100%, 0 80%, 2px 80%, 2px 98%, 20% 98% /* Bottom Left */
+    );
+}
+
+.glass-btn:hover {
+    background: rgba(255, 140, 0, 0.2);
+    border-color: #ffaa00;
+    color: #ffaa00;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.glass-btn:hover::after {
+    border-color: #ffaa00;
+    transform: scale(1.05);
+}
+        .scanline {
+    width: 100%;
+    height: 100px;
+    z-index: 5;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0.1;
+    position: absolute;
+    bottom: 100%;
+    animation: scan 8s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes scan {
+    0% { bottom: 100%; }
+    100% { bottom: -100px; }
+}
     </style>
 </head>
 <body>
@@ -214,6 +297,7 @@
             <strong>Europe</strong>
             <span>www.pilkington.com</span>
         </div>
+        <div class="scanline"></div>
     </div>
 </body>
 </html>
