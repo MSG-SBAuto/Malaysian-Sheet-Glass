@@ -249,9 +249,35 @@
     0% { bottom: 100%; }
     100% { bottom: -100px; }
 }
+        .datetime-card {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    background: white; /* Clean white pill */
+    padding: 12px 30px;
+    border-radius: 15px; /* Rounded pill shape */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#live-datetime {
+    font-family: 'Courier New', Courier, monospace; /* Matches the image font */
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50; /* Dark slate blue/grey text */
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
     </style>
 </head>
 <body>
+
+    <div class="datetime-card">
+    <div id="live-datetime">FRI, 3 APR 2026, 09:11</div>
+</div>
 
     <div class="main-wrapper">
         <div class="energy-border"></div>
@@ -269,5 +295,28 @@
     
         <div class="scanline"></div>
     </div>
+        <script>
+            function updateDateTime() {
+    const now = new Date();
+
+    // Format Options: FRI, 3 APR 2026
+    const dayName = now.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase();
+    const dayNum = now.getDate();
+    const monthName = now.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+    const year = now.getFullYear();
+    
+    // Time Format: 09:11
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+
+    const finalString = `${dayName}, ${dayNum} ${monthName} ${year}, ${hours}:${minutes}`;
+    
+    document.getElementById('live-datetime').innerText = finalString;
+}
+
+// Update every minute (or every second if you want it to jump exactly on time)
+updateDateTime();
+setInterval(updateDateTime, 1000);
+        </script>
 </body>
 </html>
