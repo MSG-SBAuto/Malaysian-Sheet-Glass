@@ -249,9 +249,30 @@
     0% { bottom: 100%; }
     100% { bottom: -100px; }
 }
+        .datetime-pill {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    background: white; /* Clean white background */
+    padding: 12px 30px;
+    border-radius: 15px; /* Rounded pill shape */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    z-index: 1000;
+}
+
+#live-display {
+    font-family: 'Courier New', Courier, monospace; /* Clean monospace font */
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50; /* Dark text */
+    letter-spacing: 2px;
+}
     </style>
 </head>
 <body>
+    <div class="datetime-pill">
+    <div id="live-display">FRI, 3 APR 2026, 09:11:00</div>
+</div>
     <div class="main-wrapper">
         <div class="energy-border"></div>
 
@@ -267,6 +288,33 @@
     <div class="footer-bar">
     
         <div class="scanline"></div>
+
+        <script>
+            function updateLiveDisplay() {
+    const now = new Date();
+
+    // Format Options: FRI, 3 APR 2026
+    const dayName = now.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase();
+    const dayNum = now.getDate();
+    const monthName = now.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+    const year = now.getFullYear();
+    
+    // Time Format: 09:11:00 (including seconds)
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+
+    // Combine everything
+    const finalString = `${dayName}, ${dayNum} ${monthName} ${year}, ${hours}:${minutes}:${seconds}`;
+    
+    // Push the string into the HTML
+    document.getElementById('live-display').innerText = finalString;
+}
+
+// Start the function and update it every second
+updateLiveDisplay();
+setInterval(updateLiveDisplay, 1000);
+        </script>
     </div>
 </body>
 </html>
