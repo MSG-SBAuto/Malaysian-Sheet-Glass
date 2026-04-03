@@ -250,28 +250,46 @@
     100% { bottom: -100px; }
 }
         .datetime-pill {
-    position: absolute;
+   position: absolute;
     top: 30px;
     right: 40px;
-    background: white; /* Clean white background */
-    padding: 12px 30px;
-    border-radius: 15px; /* Rounded pill shape */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    /* Glass Effect */
+    background: rgba(0, 0, 0, 0.3); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    /* Matching the Gold/Orange Energy Line */
+    border: 1px solid rgba(255, 170, 0, 0.4); 
+    padding: 10px 25px;
+    border-radius: 50px; /* Perfect Pill Shape */
+    
+    /* Glow effect to match your dashboard theme */
+    box-shadow: 0 0 15px rgba(255, 170, 0, 0.2); 
     z-index: 1000;
+    transition: all 0.3s ease;
 }
 
 #live-display {
     font-family: 'Courier New', Courier, monospace; /* Clean monospace font */
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
-    color: #2c3e50; /* Dark text */
-    letter-spacing: 2px;
+    color: #ffffff /* Dark text */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    letter-spacing: 1px;
+
+    .datetime-pill:hover {
+    background: rgba(255, 170, 0, 0.1);
+    border-color: rgba(255, 170, 0, 0.8);
+    box-shadow: 0 0 20px rgba(255, 170, 0, 0.4);
 }
     </style>
 </head>
 <body>
     <div class="datetime-pill">
     <div id="live-display">FRI, 3 APR 2026, 09:11:00</div>
+</div>
+    <div class="datetime-pill">
+    <div id="live-display">LOADING...</div>
 </div>
     <div class="main-wrapper">
         <div class="energy-border"></div>
@@ -290,28 +308,27 @@
         <div class="scanline"></div>
 
         <script>
-            function updateLiveDisplay() {
+        function updateLiveDisplay() {
     const now = new Date();
 
-    // Format Options: FRI, 3 APR 2026
+    // Format: FRI, 3 APR 2026
     const dayName = now.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase();
     const dayNum = now.getDate();
     const monthName = now.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
     const year = now.getFullYear();
     
-    // Time Format: 09:11:00 (including seconds)
+    // Format: 09:45:19
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
     const seconds = String(now.getSeconds()).padStart(2, '0');
 
-    // Combine everything
+    // Final String matching your screenshot format
     const finalString = `${dayName}, ${dayNum} ${monthName} ${year}, ${hours}:${minutes}:${seconds}`;
     
-    // Push the string into the HTML
     document.getElementById('live-display').innerText = finalString;
 }
 
-// Start the function and update it every second
+// Initialize and Set Interval
 updateLiveDisplay();
 setInterval(updateLiveDisplay, 1000);
         </script>
