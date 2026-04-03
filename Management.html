@@ -207,24 +207,35 @@
     0% { bottom: 100%; }
     100% { bottom: -100px; }
 }
-        .datetime-pill {
-   position: absolute;
+        /* 3. Date/Time Pill (Matches Home Button Style) */
+.datetime-pill {
+    position: absolute;
     top: 30px;
-    right: 40px;
-    /* Glass Effect */
-    background: rgba(0, 0, 0, 0.3); 
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-
-    /* Matching the Gold/Orange Energy Line */
-    border: 1px solid rgba(255, 170, 0, 0.4); 
+    right: 30px; /* Aligned with the left padding of the Home button */
     padding: 10px 25px;
-    border-radius: 50px; /* Perfect Pill Shape */
-    
-    /* Glow effect to match your dashboard theme */
-    box-shadow: 0 0 15px rgba(255, 170, 0, 0.2); 
+    background: rgba(255, 255, 255, 0.1); /* Match Home Button */
+    backdrop-filter: blur(10px);          /* Match Home Button */
+    border: 1px solid rgba(255, 170, 0, 0.4); 
+    color: white;
+    border-radius: 50px;
+    cursor: default; /* Changed to default since it's not a link */
+    font-weight: bold;
+    transition: 0.3s;
     z-index: 1000;
-    transition: all 0.3s ease;
+    display: inline-block;
+    
+    /* Text Styling to match Home Button font feel */
+    font-family: 'Arial', sans-serif; 
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* Hover Effect to match Home Button */
+.datetime-pill:hover {
+    background: rgba(255, 165, 0, 0.2); /* Slight orange tint */
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
+}
 }
     </style>
 </head>
