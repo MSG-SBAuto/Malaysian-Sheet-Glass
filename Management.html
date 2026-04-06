@@ -65,7 +65,7 @@
             z-index: 100;
         }
 
-        /* 3. Button Grid Positioning */
+        /* Button Grid Positioning */
         .button-grid-layout {
             position: absolute;
             top: 55%; 
@@ -104,7 +104,7 @@
             bottom: 0;
             width: 100%;
             height: 80px;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 1.0);
             border-top: 2px solid rgba(255, 165, 0, 0.5);
         }
     </style>
@@ -112,27 +112,23 @@
 <body>
 
     <div class="main-wrapper">
-        <!-- Home Button -->
         <a href="index.html" class="btn-home">HOME</a>
 
-        <!-- Live Clock -->
-        <div class="datetime-pill">
-            <div id="live-display">LOADING...</div>
-        </div>
-
-        <!-- Menu Buttons -->
-        <div class="button-grid-layout">
+          <div class="datetime-pill">
+           <div id="live-display"></div>
+            </div>
+        
+         <div class="button-grid-layout">
             <button class="glass-btn">LAMINATING</button>
             <button class="glass-btn">TOUGHENING</button>
             <button class="glass-btn">TERTIARY</button>
             <button class="glass-btn">SCM</button>
         </div>
-
-        <!-- Bottom Line -->
+        
         <div class="footer-bar"></div>
     </div>
 
-    <script>
+     <script>
         function updateLiveDisplay() {
             const now = new Date();
             const dayName = now.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase();
@@ -151,5 +147,5 @@
         updateLiveDisplay();
         setInterval(updateLiveDisplay, 1000);
     </script>
-</body>
+   </body>
 </html>
