@@ -111,11 +111,11 @@
         
         .button-grid-layout {
     position: absolute;
-    top: 55%;           /* Adjust based on your background text position */
-    left: 10%;          /* Adjust based on your background text position */
+    top: 55%;           
+    left: 10%;          
     display: grid;
-    grid-template-columns: repeat(2, 200px); /* Creates 2 columns, 200px wide each */
-    gap: 20px 40px;     /* First number is vertical gap, second is horizontal gap */
+    grid-template-columns: repeat(2, 200px); 
+    gap: 20px 40px;    
     z-index: 100;
 }
 
@@ -138,17 +138,17 @@
 }
         /* The Main Button Container */
 .glass-btn {
-    position: relative; /* Required for the status dot */
+    position: relative; 
     width: 220px;
     padding: 20px;
-    background: rgba(15, 15, 15, 0.7); /* Darker glass for better contrast */
+    background: rgba(15, 15, 15, 0.7); 
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: #fff;
     text-align: center;
     font-size: 1.1rem;
     font-weight: bold;
-    border-radius: 4px; /* Sharper corners look more industrial */
+    border-radius: 4px; 
     cursor: pointer;
     transition: all 0.4s ease;
     text-transform: uppercase;
@@ -198,14 +198,14 @@
 .datetime-pill {
     position: absolute;
     top: 30px;
-    right: 30px; /* Aligned with the left padding of the Home button */
+    right: 30px; 
     padding: 10px 25px;
-    background: rgba(255, 255, 255, 0.1); /* Match Home Button */
-    backdrop-filter: blur(10px);          /* Match Home Button */
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px);          
     border: 1px solid rgba(255, 170, 0, 0.4); 
     color: white;
     border-radius: 50px;
-    cursor: default; /* Changed to default since it's not a link */
+    cursor: default; 
     font-weight: bold;
     transition: 0.3s;
     z-index: 1000;
@@ -219,7 +219,7 @@
 
 /* Hover Effect to match Home Button */
 .datetime-pill:hover {
-    background: rgba(255, 165, 0, 0.2); /* Slight orange tint */
+    background: rgba(255, 165, 0, 0.2); 
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
 }
