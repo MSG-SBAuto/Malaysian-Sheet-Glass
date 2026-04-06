@@ -97,14 +97,17 @@
             box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
             letter-spacing: 1px;
         }
+          .glass-btn:hover::after {
+            left: 100%;
+        }
         .button-grid-layout {
-            position: absolute;
-            top: 55%;           
-            left: 10%;          
-            display: grid;
-            grid-template-columns: repeat(2, 200px); 
-            gap: 20px 40px;    
-            z-index: 100;
+    position: absolute;
+    top: 55%;           /
+    left: 10%;          
+    display: grid;
+    grid-template-columns: repeat(2, 200px); 
+    gap: 20px 40px;     
+    z-index: 100;
 }
           /* Footer Bar Styling */
     .footer-bar {
