@@ -151,22 +151,6 @@
     50% { opacity: 0.4; transform: scale(1.2); }
     100% { opacity: 1; transform: scale(1); }
 }
-
-/* The Corner Brackets (HUD Look) */
-.glass-btn::after {
-    content: '';
-    position: absolute;
-    top: -5px; left: -5px; bottom: -5px; right: -5px;
-    border: 1px solid rgba(255, 170, 0, 0.3);
-    pointer-events: none;
-    transition: 0.3s;
-    clip-path: polygon(
-        0 0, 20% 0, 20% 2px, 2px 2px, 2px 20%, 0 20%, /* Top Left */
-        80% 0, 100% 0, 100% 20%, 98% 20%, 98% 2px, 80% 2px, /* Top Right */
-        100% 80%, 100% 100%, 80% 100%, 80% 98%, 98% 98%, 98% 80%, /* Bottom Right */
-        20% 100%, 0 100%, 0 80%, 2px 80%, 2px 98%, 20% 98% /* Bottom Left */
-    );
-}
     </style>
 </head>
 <body>
