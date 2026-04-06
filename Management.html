@@ -1,177 +1,476 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Management Dashboard</title>
-    <style>
-        /* Background Setup */
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-            font-family: 'Arial', sans-serif;
-            background-color: #000;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSG Group Interactive</title>
+    <style>
+        /* 1. Background Setup */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+        }
 
-        .main-wrapper {
-            background-image: url("MSG AI Building Photo.png");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100vh;
-            width: 100vw;
-            position: relative;
-        }
+        .main-wrapper {
+            background-image: url("MSG AI Building Photo.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
 
-        /* Home Button (Top Left) */
-        .btn-home {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            color: white;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-            z-index: 100;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .btn-home:hover {
-            background: rgba(255, 165, 0, 0.8);
-            transform: scale(1.1);
-            box-shadow: 0 0 20px orange;
+        @keyframes glowPulse {
+            0% { opacity: 0.5; box-shadow: 0 0 10px rgba(255, 150, 0, 0.4); }
+            50% { opacity: 1; box-shadow: 0 0 25px rgba(255, 200, 50, 0.8); }
+            100% { opacity: 0.5; box-shadow: 0 0 10px rgba(255, 150, 0, 0.4); }
+        }
 
-        }
-        /* Button Container (Below "Create. Inspire. Belong") */
-        .button-container {
-            position: absolute;
-            top: 55%; /* Positions it right under the slogan */
-            left: 50%;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 100;
-        }
-        /* Shine Reflection Effect */
-        .glass-btn::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            transition: 0.5s;
-        }
+        /* 3. Home Button (Top Left) */
+        .btn-home {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            z-index: 100;
+            text-decoration: none;
+            display: inline-block;
+        }
 
-        /* Main Menu Buttons */
-            .glass-btn {
-            width: 200px;
-            padding: 12px 20px;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            text-align: left;
-            font-size: 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
+        .btn-home:hover {
+            background: rgba(255, 165, 0, 0.8);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px orange;
+        }
 
-        /* Hover Animation: Slide Right & Orange Glow */
-        .glass-btn:hover {
-            background: rgba(255, 165, 0, 0.8);
-            transform: scale(1.1);
-            box-shadow: 0 0 20px orange;
-        }
-            border-color: #fff;
-            transform: translateX(15px);
-            box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
-            letter-spacing: 1px;
-        }
-          .glass-btn:hover::after {
-            left: 100%;
-        }
-        
-.button-grid-layout {
-    position: absolute;
-    top: 55%;           
-    left: 10%;          
-    display: grid;
-    grid-template-columns: repeat(2, 200px); 
-    gap: 20px 40px;     
-    z-index: 100;
+        /* 4. Button Container (Below "Create. Inspire. Belong") */
+        .button-container {
+            position: absolute;
+            top: 55%; /* Positions it right under the slogan */
+            left: 10%;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        /* Main Menu Buttons */
+        .glass-btn {
+            width: 200px;
+            padding: 12px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            text-align: left;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        /* Hover Animation: Slide Right & Orange Glow */
+        .glass-btn:hover {
+            background: rgba(255, 140, 0, 0.7);
+            border-color: #fff;
+            transform: translateX(15px);
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
+            letter-spacing: 1px;
+        }
+
+        /* Shine Reflection Effect */
+        .glass-btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .glass-btn:hover::after {
+            left: 100%;
+        }
+        
+        .button-grid-layout {
+    position: absolute;
+    top: 55%;           /* Adjust based on your background text position */
+    left: 10%;          /* Adjust based on your background text position */
+    display: grid;
+    grid-template-columns: repeat(2, 200px); /* Creates 2 columns, 200px wide each */
+    gap: 20px 40px;     /* First number is vertical gap, second is horizontal gap */
+    z-index: 100;
 }
-        /* The Main Button Container */
-.glass-btn {
-    position: relative; 
-    width: 220px;
-    padding: 20px;
-    background: rgba(15, 15, 15, 0.7); 
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 4px; 
-    cursor: pointer;
-    transition: all 0.4s ease;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+        }
+
+        /* 4. NEW: Clock Styling (Top Right) */
+        #live-clock {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            padding: 10px 25px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 170, 0, 0.5);
+            color: #ffaa00; /* Matching the orange glow */
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            z-index: 100;
+            box-shadow: 0 0 15px rgba(255, 170, 0, 0.3);
+        }
+
+          /* Footer Bar Styling */
+    .footer-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+    backdrop-filter: blur(15px);   /* Glass blur effect */
+    border-top: 2px solid rgba(255, 165, 0, 0.8); /* The orange energy line on top */
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    gap: 40px;
+    z-index: 200;
+    box-shadow: 0 -10px 20px rgba(255, 140, 0, 0.2);
 }
-    </style>
+
+.footer-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: white;
+    margin-right: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ddd;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.footer-item:hover {
+    transform: translateY(-5px);
+    color: #ffaa00; /* Glow color on hover */
+}
+
+.footer-icon {
+    font-size: 1.5rem;
+}
+
+.footer-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-text strong {
+    font-size: 0.9rem;
+    color: white;
+}
+
+.footer-text span {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+    </style>
 </head>
 <body>
-    <div class="footer-bar">
-        </div>
-             <div class="datetime-pill">
-                 <div id="live-display">FRI, 3 APR 2026, 09:11:00 </div>
-                     <div class="main-wrapper">
-                         <div class="energy-border"></div>
 
-        <a href="index.html" class="btn-home">HOME</a>
+    <div class="main-wrapper">
+        <div class="energy-border"></div>
 
-        <div class="button-grid-layout">
-        <button class="glass-btn">LAMINATING</button>
-        <button class="glass-btn">TOUGHENING</button>
-        <button class="glass-btn">TERTIARY</button>
-        <button class="glass-btn">SCM</button>
-        </div>
+        <a href="#" class="btn-home">HOME</a>
 
-        <div class="footer-bar">
+        <div class="button-grid-layout">
+    <button class="glass-btn">LAMINATING</button>
+    <button class="glass-btn">TOUGHENING</button>
+    <button class="glass-btn">TERTIARY</button>
+    <button class="glass-btn">SCM</button>
+</div>
+        <div id="live-clock">00:00:00</div>
+    </div>
 
-        <script>
-           function updateLiveDisplay() {
-           const now = new Date();
+    <div class="footer-bar">
+    <div class="footer-title">Contact & Global Network</div>
+    
+    <div class="footer-item">
+        <div class="footer-text">
+            <strong>Malaysia</strong>
+            <span>www.nsg.com.my</span>
+        </div>
+    </div>
 
-    // Format: FRI, 3 APR 2026
-           const dayName = now.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase();
-           const dayNum = now.getDate();
-           const monthName = now.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
-           const year = now.getFullYear();
-    
-    // Format: 09:45:19
-           const hours = String(now.getHours()).padStart(2, '0');
-           const minutes = String(now.getMinutes()).padStart(2, '0');
-           const seconds = String(now.getSeconds()).padStart(2, '0');
+    <div class="footer-item">
+        <div class="footer-text">
+            <strong>Inquiry</strong>
+            <span>info@nsgroup.com</span>
+        </div>
+    </div>
 
-    // Final String matching your screenshot format
-           const finalString = `${dayName}, ${dayNum} ${monthName} ${year}, ${hours}:${minutes}:${seconds}`;
-           document.getElementById('live-display').innerText = finalString;}
+    <div class="footer-item">
+        <div class="footer-text">
+            <strong>Europe</strong>
+            <span>www.pilkington.com</span>
+        </div>
+    </div>
+</div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            let h = now.getHours();
+            let m = now.getMinutes();
+            let s = now.getSeconds();
+            
+            // Add leading zeros (e.g., 05 instead of 5)
+            h = h < 10 ? "0" + h : h;
+            m = m < 10 ? "0" + m : m;
+            s = s < 10 ? "0" + s : s;
 
-// Initialize and Set Interval
-           updateLiveDisplay();
-           setInterval(updateLiveDisplay, 1000);
-              </script>
-            </div>
-       </body>
-   </html>
+            document.getElementById('live-clock').innerText = `${h}:${m}:${s}`;
+        }
+
+        // Run clock immediately, then update every second
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+
+</body>
+</html>                                                                                                                                                                         to this code                                                                                                                                                                      <!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NSG FMDS Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="layout">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="logo">
+    <img src="NSG Logo no background WHITE.png" alt="NSG Group" class="logo-img">
+    <h2>NSG FMDS</h2>
+</div>
+
+<ul>
+
+<li onclick="window.location.href='QIP.html'">Dashboard</li>
+
+<li onclick="openLink('#')">Skill Matrix</li>
+
+<li class="menu-parent">Production
+  <ul class="submenu">
+    <li>
+      <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Laminating/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=B5bTad">
+        Laminating
+      </a>
+    </li>
+    <li>
+        <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Toughening/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=DfoEkA">
+        Toughening
+        </a>
+    </li>
+    <li>
+        <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Tertiary/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=1Q9sk2">
+        Tertiary
+        </a>
+    </li>
+    <li>
+        <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-SCM/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=kN7K78">
+        SCM
+        </a>
+    </li>
+    <li>
+        <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Quality_Control/Shared%20Documents/000%20Daily%20Meeting%20Report?csf=1&web=1&e=wSymXT">
+        Quality
+        </a>
+    </li>
+    <li>
+        <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Maintenance/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=VXeQEY">
+        Maintenance
+        </a>
+    </li>
+  </ul>
+
+<li onclick="openLink('#')">Energy Monitoring</li>
+<li onclick="openLink('#')">Quality</li>
+<li onclick="openLink('#')">Documents</li>
+
+</ul>
+
+</div>
+
+
+<!-- MAIN AREA -->
+
+<div class="main">
+
+<header>
+
+<h1>SG. BULOH FMDS DASHBOARD</h1>
+
+<div class="header-right">
+  <div class="date-chip" id="live-date"></div>
+</div>
+
+</header>
+
+
+<!-- KPI SECTION
+
+<div class="kpi">
+
+<div class="kpi-card">
+
+<h3>Production Today</h3>
+<p>12,540 pcs</p>
+
+</div>
+
+<div class="kpi-card">
+
+<h3>Machine Status</h3>
+<p>Running</p>
+
+</div>
+
+<div class="kpi-card">
+
+<h3>Energy Usage</h3>
+<p>820 kWh</p>
+
+</div>
+
+<div class="kpi-card">
+
+<h3>Quality Yield</h3>
+<p>98.6%</p>
+
+</div>
+
+</div>
+-->
+
+<!-- FMDS STEPS -->
+
+<h2 class="section-title">Daily FMDS Process</h2>
+
+<div class="fmds">
+
+<div class="step step1">
+
+<h3>STEP 1</h3>
+<h4>Develop People</h4>
+
+<button onclick="openLink('#')">Skill Matrix</button>
+
+</div>
+
+
+<div class="step step2">
+
+<h3>STEP 2</h3>
+<h4>Preparation</h4>
+
+<button>Operator Allocation</button>
+<button>4M Change</button>
+<button>Quick Kaizen</button>
+<button>Attendance</button>
+
+</div>
+
+
+<div class="step step3">
+
+<h3>STEP 3</h3>
+<h4>Stability</h4>
+
+<button>Production Progress</button>
+<button>Gemba Walk</button>
+
+</div>
+
+
+<div class="step step4">
+
+<h3>STEP 4</h3>
+<h4>Shift Change</h4>
+
+<button>5S</button>
+<button>EHS</button>
+<button>Shift Log</button>
+
+</div>
+
+</div>
+
+
+
+<!-- TOOL SECTION -->
+
+<h2 class="section-title">Quick Tools</h2>
+
+<div class="tools">
+
+<button>Production Planning</button>
+<a href="Management.html">
+  <button>Management Dashboard</button>
+</a>
+<button>Energy Monitoring</button>
+
+</div>
+
+
+
+<!-- NEWSLETTER -->
+
+<div class="newsletter">
+
+<h2>Company Newsletter</h2>
+
+<img src="images/newsletter.jpg">
+
+</div>
+
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
