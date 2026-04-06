@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Management Dashboard</title>
     <style>
-        /* Background Setup */
+        /* 1. Reset and Full Screen Setup */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
+            width: 100%;
+            overflow: hidden; /* Prevents scrollbars */
             font-family: 'Arial', sans-serif;
             background-color: #000;
         }
@@ -20,158 +21,136 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            background-attachment: fixed; /* Keeps image locked to screen */
             height: 100vh;
             width: 100vw;
             position: relative;
         }
 
-        /* Home Button (Top Left) */
+        /* 2. Top Navigation Styling */
         .btn-home {
             position: absolute;
             top: 30px;
             left: 30px;
-            padding: 10px 20px;
+            padding: 10px 25px;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.5);
             color: white;
             border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-            z-index: 100;
             text-decoration: none;
-            display: inline-block;
+            font-weight: bold;
+            z-index: 100;
+            transition: 0.3s;
         }
-        
+
         .btn-home:hover {
             background: rgba(255, 165, 0, 0.8);
             transform: scale(1.1);
             box-shadow: 0 0 20px orange;
-
         }
-        /* Button Container (Below "Create. Inspire. Belong") */
-        .button-container {
+
+        .datetime-pill {
             position: absolute;
-            top: 55%; /* Positions it right under the slogan */
-            left: 50%;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            top: 30px;
+            right: 30px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 170, 0, 0.4);
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.95rem;
             z-index: 100;
         }
-        /* Shine Reflection Effect */
-        .glass-btn::after {
-            content: '';
+
+        /* 3. Button Grid Positioning */
+        .button-grid-layout {
             position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            transition: 0.5s;
+            top: 55%; 
+            left: 10%; 
+            display: grid;
+            grid-template-columns: repeat(2, 220px); 
+            gap: 20px 40px; 
+            z-index: 100;
         }
 
-        /* Main Menu Buttons */
-            .glass-btn {
-            width: 200px;
-            padding: 12px 20px;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            text-align: left;
-            font-size: 1rem;
-            border-radius: 5px;
+        .glass-btn {
+            width: 220px;
+            padding: 20px;
+            background: rgba(15, 15, 15, 0.7); 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 4px; 
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
             transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        /* Hover Animation: Slide Right & Orange Glow */
         .glass-btn:hover {
             background: rgba(255, 165, 0, 0.8);
-            transform: scale(1.1);
+            transform: scale(1.05) translateX(10px);
             box-shadow: 0 0 20px orange;
         }
-            border-color: #fff;
-            transform: translateX(15px);
-            box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
-            letter-spacing: 1px;
+
+        .footer-bar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 2px solid rgba(255, 165, 0, 0.5);
         }
-          .glass-btn:hover::after {
-            left: 100%;
-        }
-        
-.button-grid-layout {
-    position: absolute;
-    top: 55%;           
-    left: 10%;          
-    display: grid;
-    grid-template-columns: repeat(2, 200px); 
-    gap: 20px 40px;     
-    z-index: 100;
-}
-        /* The Main Button Container */
-.glass-btn {
-    position: relative; 
-    width: 220px;
-    padding: 20px;
-    background: rgba(15, 15, 15, 0.7); 
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 4px; 
-    cursor: pointer;
-    transition: all 0.4s ease;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
     </style>
 </head>
 <body>
-    <div class="footer-bar">
-        </div>
-             <div class="datetime-pill">
-                 <div id="live-display">FRI, 3 APR 2026, 09:11:00 </div>
-                     <div class="main-wrapper">
-                         <div class="energy-border"></div>
 
+    <div class="main-wrapper">
+        <!-- Home Button -->
         <a href="index.html" class="btn-home">HOME</a>
 
-        <div class="button-grid-layout">
-        <button class="glass-btn">LAMINATING</button>
-        <button class="glass-btn">TOUGHENING</button>
-        <button class="glass-btn">TERTIARY</button>
-        <button class="glass-btn">SCM</button>
+        <!-- Live Clock -->
+        <div class="datetime-pill">
+            <div id="live-display">LOADING...</div>
         </div>
 
-        <div class="footer-bar">
+        <!-- Menu Buttons -->
+        <div class="button-grid-layout">
+            <button class="glass-btn">LAMINATING</button>
+            <button class="glass-btn">TOUGHENING</button>
+            <button class="glass-btn">TERTIARY</button>
+            <button class="glass-btn">SCM</button>
+        </div>
 
-        <script>
-           function updateLiveDisplay() {
-           const now = new Date();
+        <!-- Bottom Line -->
+        <div class="footer-bar"></div>
+    </div>
 
-    // Format: FRI, 3 APR 2026
-           const dayName = now.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase();
-           const dayNum = now.getDate();
-           const monthName = now.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
-           const year = now.getFullYear();
-    
-    // Format: 09:45:19
-           const hours = String(now.getHours()).padStart(2, '0');
-           const minutes = String(now.getMinutes()).padStart(2, '0');
-           const seconds = String(now.getSeconds()).padStart(2, '0');
+    <script>
+        function updateLiveDisplay() {
+            const now = new Date();
+            const dayName = now.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase();
+            const dayNum = now.getDate();
+            const monthName = now.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+            const year = now.getFullYear();
+            
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
 
-    // Final String matching your screenshot format
-           const finalString = `${dayName}, ${dayNum} ${monthName} ${year}, ${hours}:${minutes}:${seconds}`;
-           document.getElementById('live-display').innerText = finalString;}
+            const finalString = `${dayName}, ${dayNum} ${monthName} ${year}, ${hours}:${minutes}:${seconds}`;
+            document.getElementById('live-display').innerText = finalString;
+        }
 
-// Initialize and Set Interval
-           updateLiveDisplay();
-           setInterval(updateLiveDisplay, 1000);
-              </script>
-            </div>
-       </body>
-   </html>
+        updateLiveDisplay();
+        setInterval(updateLiveDisplay, 1000);
+    </script>
+</body>
+</html>
