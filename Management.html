@@ -92,7 +92,7 @@
         }
 
         /* Hover Animation: Slide Right & Orange Glow */
-        .glass-btn:hover {.btn-home:hover {
+        .glass-btn:hover {
             background: rgba(255, 165, 0, 0.8);
             transform: scale(1.1);
             box-shadow: 0 0 20px orange;
@@ -243,28 +243,28 @@
         <div class="footer-bar">
 
         <script>
-        function updateLiveDisplay() {
-        const now = new Date();
+           function updateLiveDisplay() {
+           const now = new Date();
 
     // Format: FRI, 3 APR 2026
-        const dayName = now.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase();
-        const dayNum = now.getDate();
-        const monthName = now.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
-        const year = now.getFullYear();
+           const dayName = now.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase();
+           const dayNum = now.getDate();
+           const monthName = now.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+           const year = now.getFullYear();
     
     // Format: 09:45:19
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
+           const hours = String(now.getHours()).padStart(2, '0');
+           const minutes = String(now.getMinutes()).padStart(2, '0');
+           const seconds = String(now.getSeconds()).padStart(2, '0');
 
     // Final String matching your screenshot format
-        const finalString = `${dayName}, ${dayNum} ${monthName} ${year}, ${hours}:${minutes}:${seconds}`;
-        document.getElementById('live-display').innerText = finalString;}
+           const finalString = `${dayName}, ${dayNum} ${monthName} ${year}, ${hours}:${minutes}:${seconds}`;
+           document.getElementById('live-display').innerText = finalString;}
 
 // Initialize and Set Interval
-        updateLiveDisplay();
-        setInterval(updateLiveDisplay, 1000);
-        </script>
-     </div>
-  </body>
-</html>
+           updateLiveDisplay();
+           setInterval(updateLiveDisplay, 1000);
+              </script>
+            </div>
+       </body>
+   </html>
