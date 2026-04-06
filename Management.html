@@ -66,6 +66,14 @@
             gap: 12px;
             z-index: 100;
         }
+        /* Shine Reflection Effect */
+        .glass-btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            transition: 0.5s;
+        }
 
         /* Main Menu Buttons */
         .glass-btn {
