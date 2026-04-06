@@ -223,10 +223,94 @@
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
 }
+        /* Matching Date/Time Pill (Matches Home Button) */
+.datetime-pill {
+    position: absolute;
+    top: 30px;
+    right: 30px; /* Symmetrical with Home button */
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.1); /* Frosted Glass Look */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 170, 0, 0.4); /* NSG Orange Border */
+    color: white;
+    border-radius: 50px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    z-index: 1000;
+    transition: 0.3s ease;
+    cursor: default;
+}
+
+.datetime-pill:hover {
+    background: rgba(255, 165, 0, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.4);
+}
+
+/* Background Scanline Animation */
+.scanline {
+    width: 100%;
+    height: 10px;
+    z-index: 5;
+    background: linear-gradient(to bottom, transparent, rgba(255, 170, 0, 0.1), transparent);
+    position: absolute;
+    top: -10px;
+    left: 0;
+    animation: scanMove 8s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes scanMove {
+    0% { top: 0%; }
+    100% { top: 100%; }
+}
+
+/* Enhanced 2x2 Grid Buttons */
+.glass-btn {
+    position: relative;
+    width: 220px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: 0.4s;
+    border-radius: 4px;
+}
+
+.glass-btn:hover {
+    background: rgba(255, 170, 0, 0.2);
+    border-color: #ffaa00;
+    transform: translateX(10px); /* Smooth slide effect */
 }
     </style>
 </head>
 <body>
+    <div class="main-wrapper">
+    <div class="scanline"></div>
+    <div class="energy-border"></div>
+
+    <a href="index.html" class="btn-home">HOME</a>
+    
+    <div class="datetime-pill">
+        <div id="live-display">LOADING...</div>
+    </div>
+
+    <div class="button-grid-layout">
+        <button class="glass-btn">LAMINATING</button>
+        <button class="glass-btn">TOUGHENING</button>
+        <button class="glass-btn">TERTIARY</button>
+        <button class="glass-btn">SCM</button>
+    </div>
+
+    <div class="footer-bar">
+        </div>
+</div>
     <div class="datetime-pill">
         <div id="live-display">FRI, 3 APR 2026, 09:11:00</div>
     </div>
