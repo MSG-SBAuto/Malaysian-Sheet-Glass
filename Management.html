@@ -69,16 +69,17 @@
         .button-grid-layout {
             position: absolute;
             top: 55%; 
-            left: 10%; 
+            left: 50%;
+            transform: translateX(-50%);   /* 🔥 center the whole grid */
             display: grid;
             grid-template-columns: repeat(2, 220px); 
-            gap: 20px 40px; 
+            gap: 25px 40px; 
             z-index: 100;
         }
 
         .glass-btn {
-            width: 220px;
-            padding: 30px;
+            width: 100%;              /* auto fit grid column */
+            padding: 25px 20px;       /* better vertical size */
             background: rgba(11, 196, 238, 0.5); 
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 170, 0, 0.1);
