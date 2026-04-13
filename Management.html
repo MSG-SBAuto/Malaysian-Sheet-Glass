@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NSG FMDS Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<div class="layout">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="logo">
+    <img src="NSG Logo no background WHITE.png" alt="NSG Group" class="logo-img">
+    <h2>NSG FMDS</h2>
+</div>
+
+<ul>
+
+<li onclick="window.location.href='QIP.html'">Dashboard</li>
+
+<li onclick="openLink('#')">Skill Matrix</li>
+
+<li class="menu-parent">Production
+  <ul class="submenu">
+    <li>
+      <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Laminating/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=B5bTad">
+        Laminating
+      </a>
+    </li>
+    <li>
+        <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Toughening/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=DfoEkA">
+        Toughening
+        </a>
+    </li>
+    <li>
+        <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Tertiary/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=1Q9sk2">
+        Tertiary
+        </a>
+    </li>
+    <li>
+        <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-SCM/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=kN7K78">
+        SCM
+        </a>
+    </li>
+    <li>
+        <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Quality_Control/Shared%20Documents/000%20Daily%20Meeting%20Report?csf=1&web=1&e=wSymXT">
+        Quality
+        </a>
+    </li>
+    <li>
+        <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Maintenance/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=VXeQEY">
+        Maintenance
+        </a>
+    </li>
+  </ul>
+
+<li onclick="openLink('#')">Energy Monitoring</li>
+<li onclick="openLink('#')">Quality</li>
+<li onclick="openLink('#')">Documents</li>
+
+</ul>
+
+</div>
+
+
+<!-- MAIN AREA -->
+
+<div class="main">
+
+<header>
+
+<h1>SG. BULOH FMDS DASHBOARD</h1>
+
+<div class="header-right">
+  <div class="date-chip" id="live-date"></div>
+</div>
+
+</header>
+
+
+<!-- KPI SECTION
+
+<div class="kpi">
+
+<div class="kpi-card">
+
+<h3>Production Today</h3>
+<p>12,540 pcs</p>
+
+</div>
+
+<div class="kpi-card">
+
+<h3>Machine Status</h3>
+<p>Running</p>
+
+</div>
+
+<div class="kpi-card">
+
+<h3>Energy Usage</h3>
+<p>820 kWh</p>
+
+</div>
+
+<div class="kpi-card">
+
+<h3>Quality Yield</h3>
+<p>98.6%</p>
+
+</div>
+
+</div>
+-->
+
+<!-- FMDS STEPS -->
+
+<h2 class="section-title">Daily FMDS Process</h2>
+
+<div class="fmds">
+
+<div class="step step1">
+
+<h3>STEP 1</h3>
+<h4>Develop People</h4>
+
+<button onclick="openLink('#')">Skill Matrix</button>
+
+</div>
+
+
+<div class="step step2">
+
+<h3>STEP 2</h3>
+<h4>Preparation</h4>
+
+<button>Operator Allocation</button>
+<button>4M Change</button>
+<button>Quick Kaizen</button>
+<button>Attendance</button>
+
+</div>
+
+
+<div class="step step3">
+
+<h3>STEP 3</h3>
+<h4>Stability</h4>
+
+<button>Production Progress</button>
+<button>Gemba Walk</button>
+
+</div>
+
+
+<div class="step step4">
+
+<h3>STEP 4</h3>
+<h4>Shift Change</h4>
+
+<button>5S</button>
+<button>EHS</button>
+<button>Shift Log</button>
+
+</div>
+
+</div>
+
+
+
+<!-- TOOL SECTION -->
+
+<h2 class="section-title">Quick Tools</h2>
+
+<div class="tools">
+
+<button>Production Planning</button>
+<a href="Management.html">
+  <button>Management Dashboard</button>
+</a>
+<button>Energy Monitoring</button>
+
+</div>
+
+
+
+<!-- NEWSLETTER -->
+
+<div class="newsletter">
+
+<h2>Company Newsletter</h2>
+
+<img src="images/newsletter.jpg">
+
+</div>
+
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
