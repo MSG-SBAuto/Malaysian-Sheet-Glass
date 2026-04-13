@@ -1,216 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Dashboard</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; 
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+        }
 
-<title>NSG FMDS Dashboard</title>
+        .main-wrapper {
+            background-image: url("MSG AI Building Photo.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
 
-<link rel="stylesheet" href="style.css">
+        /* Top Navigation Styling */
+        .btn-home {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 170, 0, 0.4);
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 100;
+            transition: 0.3s;
+        }
 
+        .btn-home:hover {
+            background: rgba(255, 165, 0, 0.8);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px orange;
+        }
+
+        .datetime-pill {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 170, 0, 0.4);
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.95rem;
+            z-index: 100;
+        }
+
+        /* Button Grid Positioning */
+        .button-grid-layout {
+            position: absolute;
+            top: 60%; 
+            left: 50%;
+            transform: translateX(-50%);   /* 🔥 center the whole grid */
+            display: grid;
+            grid-template-columns: repeat(3, 200px); 
+            gap: 20px 70px; 
+            z-index: 100;
+        }
+
+        .glass-btn {
+            width: 100%;             /* auto fit grid column */
+            padding: 20px;           /* better vertical size */
+            background: rgba(11, 196, 238, 0.5); 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 170, 0, 0.1);
+            color: #fff;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 2px;       /* slightly smoother */
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;   /* remove underline */
+        }
+
+        .glass-btn:hover {
+            background: rgba(11, 196, 206, 0.8);
+            transform: scale(1.05) translateX(10px);
+            box-shadow: 0 0 20px light blue;
+        }
+
+        .footer-bar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.7);
+            border-top: 2px solid rgba(255, 165, 0, 0.5);
+        }
+    </style>
 </head>
-
-
 <body>
 
-<div class="layout">
-
-<!-- SIDEBAR -->
-
-<div class="sidebar">
-
-<div class="logo">
-    <img src="NSG Logo no background WHITE.png" alt="NSG Group" class="logo-img">
-    <h2>NSG FMDS</h2>
-</div>
-
-<ul>
-
-<li onclick="window.location.href='QIP.html'">Dashboard</li>
-
-<li onclick="openLink('#')">Skill Matrix</li>
-
-<li class="menu-parent">Production
-  <ul class="submenu">
-    <li>
-      <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Laminating/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=B5bTad">
-        Laminating
-      </a>
-    </li>
-    <li>
-        <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Toughening/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=DfoEkA">
-        Toughening
-        </a>
-    </li>
-    <li>
-        <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Tertiary/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=1Q9sk2">
-        Tertiary
-        </a>
-    </li>
-    <li>
-        <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-SCM/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=kN7K78">
-        SCM
-        </a>
-    </li>
-    <li>
-        <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Quality_Control/Shared%20Documents/000%20Daily%20Meeting%20Report?csf=1&web=1&e=wSymXT">
-        Quality
-        </a>
-    </li>
-    <li>
-        <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Maintenance/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=VXeQEY">
-        Maintenance
-        </a>
-    </li>
-  </ul>
-
-<li onclick="openLink('#')">Energy Monitoring</li>
-<li onclick="openLink('#')">Quality</li>
-<li onclick="openLink('#')">Documents</li>
-
-</ul>
-
-</div>
-
-
-<!-- MAIN AREA -->
-
-<div class="main">
-
-<header>
-
-<h1>SG. BULOH FMDS DASHBOARD</h1>
-
-<div class="header-right">
-  <div class="date-chip" id="live-date"></div>
-</div>
-
-</header>
-
-
-<!-- KPI SECTION
-
-<div class="kpi">
-
-<div class="kpi-card">
-
-<h3>Production Today</h3>
-<p>12,540 pcs</p>
-
-</div>
-
-<div class="kpi-card">
-
-<h3>Machine Status</h3>
-<p>Running</p>
-
-</div>
-
-<div class="kpi-card">
-
-<h3>Energy Usage</h3>
-<p>820 kWh</p>
-
-</div>
-
-<div class="kpi-card">
-
-<h3>Quality Yield</h3>
-<p>98.6%</p>
-
-</div>
-
-</div>
--->
-
-<!-- FMDS STEPS -->
-
-<h2 class="section-title">Daily FMDS Process</h2>
-
-<div class="fmds">
-
-<div class="step step1">
-
-<h3>STEP 1</h3>
-<h4>Develop People</h4>
-
-<button onclick="openLink('#')">Skill Matrix</button>
-
-</div>
-
-
-<div class="step step2">
-
-<h3>STEP 2</h3>
-<h4>Preparation</h4>
-
-<button>Operator Allocation</button>
-<button>4M Change</button>
-<button>Quick Kaizen</button>
-<button>Attendance</button>
-
-</div>
-
-
-<div class="step step3">
-
-<h3>STEP 3</h3>
-<h4>Stability</h4>
-
-<button>Production Progress</button>
-<button>Gemba Walk</button>
-
-</div>
-
-
-<div class="step step4">
-
-<h3>STEP 4</h3>
-<h4>Shift Change</h4>
-
-<button>5S</button>
-<button>EHS</button>
-<button>Shift Log</button>
-
-</div>
-
-</div>
-
-
-
-<!-- TOOL SECTION -->
-
-<h2 class="section-title">Quick Tools</h2>
-
-<div class="tools">
-
-<button>Production Planning</button>
-<a href="Management.html">
-  <button>Management Dashboard</button>
-</a>
-<button>Energy Monitoring</button>
-
-</div>
-
-
-
-<!-- NEWSLETTER -->
-
-<div class="newsletter">
-
-<h2>Company Newsletter</h2>
-
-<img src="images/newsletter.jpg">
-
-</div>
-
-
-</div>
-
-</div>
-
-<script src="script.js"></script>
-
-</body>
+    <div class="main-wrapper">
+        <a href="Home.html" class="btn-home">HOME</a>
+
+          <div class="datetime-pill">
+           <div id="live-display"></div>
+            </div>
+        
+         <div class="button-grid-layout">
+            <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Laminating/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=B5bTad" 
+                   class="glass-btn">
+                   LAMINATING
+            </a>
+            <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Toughening/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=DfoEkA" 
+               class="glass-btn">
+               TOUGHENING
+            </a>
+            <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Tertiary/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=1Q9sk2" 
+               class="glass-btn">
+               TERTIARY
+            </a>
+            <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-SCM/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=kN7K78" 
+               class="glass-btn">
+               SCM
+            </a>
+            <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Quality_Control/Shared%20Documents/000%20Daily%20Meeting%20Report?csf=1&web=1&e=wSymXT" 
+               class="glass-btn">
+               Quality Control
+            </a>
+            <a href="https://nsg.sharepoint.com/:f:/r/sites/SB_Auto-Maintenance/Shared%20Documents/Daily%20Meeting%20Report?csf=1&web=1&e=VXeQEY" 
+               class="glass-btn">
+               Maintenance
+            </a>
+        </div>
+        
+        <div class="footer-bar"></div>
+    </div>
+
+     <script>
+        function updateLiveDisplay() {
+            const now = new Date();
+            const dayName = now.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase();
+            const dayNum = now.getDate();
+            const monthName = now.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+            const year = now.getFullYear();
+            
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            const finalString = `${dayName}, ${dayNum} ${monthName} ${year}, ${hours}:${minutes}:${seconds}`;
+            document.getElementById('live-display').innerText = finalString;
+        }
+
+        updateLiveDisplay();
+        setInterval(updateLiveDisplay, 1000);
+    </script>
+   </body>
 </html>
